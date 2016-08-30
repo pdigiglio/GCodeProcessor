@@ -30,37 +30,38 @@ inline decltype(auto) split_string(const std::string& input_string) {
         std::istream_iterator<std::string>()};
 }
 
-
+// Helper function to create a GCodeLineEntry out of the vector
+// of line items found in the .gcode input file (i.e. G1, X1.123 and so on)
 decltype(auto) interpret_entry (const std::vector<std::string>& input) {
     // empty line entry
     GCodeLineEntry line_entry;
     bool entry_is_valid = false;
 
-    std::string::size_type n;
-    if (input[0].find('G') == 0) {
-//        std::cout << std::stoi(input[0].substr(1)) << std::endl;
-        line_entry.G = std::stoi(input[0].substr(1));
+    if (input.size() > 3) {
+        std::string::size_type n;
+        if (input[0].find('G') == 0) {
+            line_entry.G = std::stoi(input[0].substr(1));
 
-        if (input[1].find('X') == 0) {
-//            std::cout << std::stod(input[1].substr(1)) << std::endl;
-            line_entry.X = std::stod(input[1].substr(1));
+            if (input[1].find('X') == 0) {
+                line_entry.X = std::stod(input[1].substr(1));
 
-            if (input[2].find('Y') == 0) {
-//                std::cout << std::stod(input[2].substr(1)) << std::endl;
-                line_entry.Y = std::stod(input[2].substr(1));
+                if (input[2].find('Y') == 0) {
+                    line_entry.Y = std::stod(input[2].substr(1));
 
-                if (input[3].find('E') == 0) {
-//                    std::cout << std::stod(input[3].substr(1)) << std::endl;
-                    line_entry.E = std::stod(input[3].substr(1));
-                    entry_is_valid = true;
+                    if (input[3].find('E') == 0) {
+                        line_entry.E = std::stod(input[3].substr(1));
+                        entry_is_valid = true;
+                    }
                 }
             }
         }
     }
 
+
     return std::make_pair(entry_is_valid, line_entry);
 } 
 
+// Helper function to print a GCode entry out of a GCodeLineEntry
 std::string GCodeLineEntry_to_string(const GCodeLineEntry& input) {
     std::ostringstream out;
     out <<  "G" << input.G
@@ -73,15 +74,11 @@ std::string GCodeLineEntry_to_string(const GCodeLineEntry& input) {
 
 void GCodeProcessor::process() {
     for (const auto& it : InputFileLines_) {
-        auto string_splitted = split_string(it);
-        if (string_splitted.size() > 3) {
-            auto interpreted_entry = interpret_entry(string_splitted);
-            if (interpreted_entry.first) {
-                std::cout << GCodeLineEntry_to_string(interpreted_entry.second);
-                std::cout << it << std::endl << std::endl;
-            }
+        auto interpreted_entry = interpret_entry(split_string(it));
+        if (interpreted_entry.first) {
+            std::cout << GCodeLineEntry_to_string(interpreted_entry.second);
+            std::cout << it << std::endl << std::endl;
         }
-
     }
 }
 
