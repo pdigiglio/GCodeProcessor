@@ -9,6 +9,7 @@
 #include <sstream>
 #include <string>
 
+/// \brief Reads an input file line by line.
 class InputFileIterator : public std::iterator<std::input_iterator_tag, std::string>
 {
 
@@ -26,40 +27,40 @@ private:
 
 public:
 
-    /// Construct and read the first line in
-    /// \param is ifstream to read from
+    /// \brief Construct and read the first line in.
+    /// \param is Input stream to read from.
     InputFileIterator(istream_type& is) : InputStream_(&is) { ++(*this); };
 
-    /// Deference operator
-    /// \return Value_
+    /// \brief Deference operator.
+    /// \return The line that is currently loaded in `Value_` (i.e. a copy of `Value_).
     const std::string operator*() const
     { return Value_; };
 
-    /// Arrow iterator
-    /// \return `i->m` is the same as `(*i).m`
+    /// \brief Arrow iterator.
+    /// \return `i->m` is the same as `(*i).m`.
     decltype(auto) operator->() const
     { return (*this).operator*(); };
 
-    /// pre-increment operator (read line in)
+    /// Pre-increment operator (read line in).
     InputFileIterator& operator++();
 
-    /// post-increment operator (read line in by calling `++(*this)`)
+    /// Post-increment operator (read line in).
     InputFileIterator operator++(int);
 
-    /// Returns just an empty iterator
+    /// Returns an empty iterator.
     static const InputFileIterator& end()
     { static InputFileIterator IFI_END; return IFI_END; }
 
-    /// equality operator; checks if pointers to streams are equal
+    /// Equality operator; checks if pointers to streams are equal.
     friend const bool operator==(const InputFileIterator& lhs, const InputFileIterator& rhs)
     { return lhs.InputStream_ == rhs.InputStream_; }
 
 private:
 
-    /// input stream pointer to file being read in by `this`
+    /// Input stream pointer to file being read in by `this`.
     istream_type* InputStream_;
 
-    /// currently loaded line
+    /// Currently loaded line.
     std::string Value_;
 
 };
