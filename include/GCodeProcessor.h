@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-/// Class to read int and process a `.gcode` file.
+/// Class to read in and process a `.gcode` file.
 class GCodeProcessor {
 public:
     /// \brief   Constructor.
