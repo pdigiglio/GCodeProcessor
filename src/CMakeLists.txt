@@ -3,6 +3,7 @@ set(INCLUDE_DIRECTORIES
 include_directories(${INCLUDE_DIRECTORIES})
 
 set(GCodeProcessor_SOURCES
+    GCodeLineEntryStack.cpp
     GCodeProcessor.cpp
     InputFileIterator.cpp
     main.cpp
