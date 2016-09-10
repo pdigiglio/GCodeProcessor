@@ -32,7 +32,7 @@ public:
     InputFileIterator(istream_type& is) : InputStream_(&is) { ++(*this); };
 
     /// \brief Deference operator.
-    /// \return The line that is currently loaded in `Value_` (i.e. a copy of `Value_).
+    /// \return The line that is currently loaded in `Value_` (i.e. a copy of `Value_`).
     const std::string operator*() const
     { return Value_; };
 
@@ -62,7 +62,6 @@ private:
 
     /// Currently loaded line.
     std::string Value_;
-
 };
 
 /// inequality operator

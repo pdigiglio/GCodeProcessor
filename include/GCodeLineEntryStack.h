@@ -7,6 +7,7 @@
 #define  GCode_Line_Entry_Stack_h
 
 #include "GCodeLineEntry.h"
+#include "TriggerParameters.h"
 
 #include <utility>
 #include <vector>
@@ -18,7 +19,7 @@ class GCodeLineEntryStack
 {
 public:
     /// Constructor.
-    explicit GCodeLineEntryStack();
+    explicit GCodeLineEntryStack(std::size_t stack_length, const TriggerParameters& trigger_params);
 
     /// _Default_ destructor.
     ~GCodeLineEntryStack()         = default;
@@ -49,8 +50,18 @@ private:
     /// The two temporary elements to interpolate between.
     std::vector<std::pair<bool, GCodeLineEntry>> Stack_;
 
+    /// The length of the stack.
+    const std::size_t StackLength_;
+
+    /// The threshold for the parameters to trigger the interpolation.
+    TriggerParameters MinimumTriggerParameters_;
+
     /// Interpolates between the entries of the `Stack_`.
     std::pair<bool, GCodeLineEntry> interpolate() const;
+
+    /// Slides the stack entries back and puts `entry` on top.
+    /// \param entry The entry to stack on top.
+    void slide_back(const std::pair<bool, GCodeLineEntry>& entry);
 };
 
 #endif

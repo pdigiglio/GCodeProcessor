@@ -1,8 +1,15 @@
-/// \file
+/// \file    GCodeProcessor.h
+/// \author  Paolo Di Giglio (github.com/pdigiglio),
+///          <p.digiglio91@gmail.com>
 
 #ifndef  GCode_Processor_h
 #define  GCode_Processor_h
 
+#include "fwd/TriggerParameters.h"
+
+#include "GCodeLineEntryStack.h"
+
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -12,7 +19,7 @@ public:
     /// \brief   Constructor.
     /// \details Reads the input file in and stores the lines in a `std::vector`.
     /// \param input_file_name The name of the file to read in.
-    explicit GCodeProcessor(const std::string& input_file_name);
+    explicit GCodeProcessor(const std::string& input_file_name, const TriggerParameters& trigger_params);
 
     /// _Default_ destructor.
     ~GCodeProcessor() = default;
@@ -34,7 +41,9 @@ public:
 private:
     /// The vector of read-in lines.
     std::vector<std::string> InputFileLines_;
-    // std::unique_ptr InputEntriesStack_;
+
+    /// The 2-element `.gcode` line entry stack.
+    std::unique_ptr<GCodeLineEntryStack> InputEntriesStack_;
 };
 
 #endif

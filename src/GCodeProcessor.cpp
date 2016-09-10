@@ -3,19 +3,25 @@
 
 #include "GCodeProcessor.h"
 
+#include "TriggerParameters.h"
+
 #include "GCodeLineEntry.h"
+#include "GCodeLineEntryStack.h"
 #include "InputFileIterator.h"
 
 #include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <iterator>
+#include <memory>
 #include <sstream>
 #include <string>
 #include <utility>
 #include <vector>
 
-GCodeProcessor::GCodeProcessor(const std::string& input_file_name) {
+GCodeProcessor::GCodeProcessor(const std::string& input_file_name, const TriggerParameters& trigger_params) :
+    InputEntriesStack_(std::make_unique<GCodeLineEntryStack>(3, trigger_params))
+{
     std::ifstream inFile(input_file_name, std::ios::in);
     std::copy(InputFileIterator(inFile), InputFileIterator::end(),
             std::inserter(InputFileLines_, InputFileLines_.begin()));
@@ -73,12 +79,15 @@ std::string GCodeLineEntry_to_string(const GCodeLineEntry& input) {
 }
 
 void GCodeProcessor::process() {
+    std::size_t line_number = 0;
     for (const auto& it : InputFileLines_) {
-        auto interpreted_entry = interpret_entry(split_string(it));
-        if (interpreted_entry.first) {
-            std::cout << GCodeLineEntry_to_string(interpreted_entry.second);
-            std::cout << it << std::endl << std::endl;
-        }
+        auto inserted_entry(InputEntriesStack_->push(interpret_entry(split_string(it))));
+        if (inserted_entry.first)
+            std::cout << "Entry has been inserted in line " << ++line_number << std::endl;
+//        if (interpreted_entry.first) {
+//            std::cout << GCodeLineEntry_to_string(interpreted_entry.second);
+//            std::cout << it << std::endl << std::endl;
+//        }
     }
 }
 

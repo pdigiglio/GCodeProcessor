@@ -1,6 +1,7 @@
 /// \file
 
 #include "GCodeProcessor.h"
+#include "TriggerParameters.h"
 
 #include <iostream>
 #include <string>
@@ -13,7 +14,8 @@ int main (int argc, char *argv[]) {
     } 
 
     // Read the file in
-    GCodeProcessor gcode_processor(static_cast<std::string>(argv[1]));
+    GCodeProcessor gcode_processor(static_cast<std::string>(argv[1]),
+                                   TriggerParameters(5, 120));
     // Process the file
     gcode_processor.process();
     // Print the processed file to std::cout
