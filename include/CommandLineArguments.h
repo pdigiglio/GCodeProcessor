@@ -26,11 +26,11 @@ public:
     const std::string& fileName() const
     { return FileName_; }
 
-    /// Returns the parsed extruder angle.
+    /// Returns the parsed extruder angle (in degrees).
     const double angle() const
     { return Angle_; }
 
-    /// Returns the parsed extruder travel length.
+    /// Returns the parsed extruder travel length (in millimeters).
     const double length() const
     { return Length_; }
 
