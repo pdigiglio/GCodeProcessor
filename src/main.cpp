@@ -12,6 +12,13 @@ int main (int argc, const char *argv[]) {
     // parse command line options
     try {
         CommandLineArguments cmdArgs(argc, argv);
+        // Read the file in
+        GCodeProcessor gcode_processor(cmdArgs.fileName(),
+                TriggerParameters(cmdArgs.length(), cmdArgs.angle()));
+        // Process the file
+        gcode_processor.process();
+        // Print the processed file to std::cout
+        //    gcode_processor.print();
     } catch (std::exception& e) {
         std::cerr << std::endl;
 
@@ -33,13 +40,6 @@ int main (int argc, const char *argv[]) {
         std::abort();
     }
 
-    // Read the file in
-    GCodeProcessor gcode_processor(cmdArgs.fileName(),
-                                   TriggerParameters(cmdArgs.length(), cmdArgs.angle()));
-    // Process the file
-    gcode_processor.process();
-    // Print the processed file to std::cout
-//    gcode_processor.print();
 
     return 0;
 }
