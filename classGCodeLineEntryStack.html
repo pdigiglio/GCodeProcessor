@@ -98,10 +98,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0d59ba78a0e6f2384342edda91b9b90a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d59ba78a0e6f2384342edda91b9b90a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeLineEntryStack.html#a0d59ba78a0e6f2384342edda91b9b90a">GCodeLineEntryStack</a> ()</td></tr>
-<tr class="memdesc:a0d59ba78a0e6f2384342edda91b9b90a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br /></td></tr>
-<tr class="separator:a0d59ba78a0e6f2384342edda91b9b90a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3251a514630aad9d8f0ed08ad47f42c3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3251a514630aad9d8f0ed08ad47f42c3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeLineEntryStack.html#a3251a514630aad9d8f0ed08ad47f42c3">GCodeLineEntryStack</a> (std::size_t stack_length, const <a class="el" href="structTriggerParameters.html">TriggerParameters</a> &amp;trigger_params)</td></tr>
+<tr class="memdesc:a3251a514630aad9d8f0ed08ad47f42c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br /></td></tr>
+<tr class="separator:a3251a514630aad9d8f0ed08ad47f42c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ae6d396db714a9cdd0eac63ad15dbc7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ae6d396db714a9cdd0eac63ad15dbc7"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeLineEntryStack.html#a3ae6d396db714a9cdd0eac63ad15dbc7">~GCodeLineEntryStack</a> ()=default</td></tr>
 <tr class="memdesc:a3ae6d396db714a9cdd0eac63ad15dbc7"><td class="mdescLeft">&#160;</td><td class="mdescRight"><em>Default</em> destructor. <br /></td></tr>
@@ -136,6 +136,8 @@ Private Member Functions</h2></td></tr>
 std::pair&lt; bool, <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeLineEntryStack.html#a9901e34def224f602c55b81fcc11a664">interpolate</a> () const </td></tr>
 <tr class="memdesc:a9901e34def224f602c55b81fcc11a664"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpolates between the entries of the <code>Stack_</code>. <br /></td></tr>
 <tr class="separator:a9901e34def224f602c55b81fcc11a664"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90ed1c0e067c1d25ddd3339f3331af89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeLineEntryStack.html#a90ed1c0e067c1d25ddd3339f3331af89">slide_back</a> (const std::pair&lt; bool, <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &gt; &amp;entry)</td></tr>
+<tr class="separator:a90ed1c0e067c1d25ddd3339f3331af89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -143,6 +145,14 @@ Private Attributes</h2></td></tr>
 std::vector&lt; std::pair&lt; bool, <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeLineEntryStack.html#ab62606cc9506ce923fc3e1cec6f0d228">Stack_</a></td></tr>
 <tr class="memdesc:ab62606cc9506ce923fc3e1cec6f0d228"><td class="mdescLeft">&#160;</td><td class="mdescRight">The two temporary elements to interpolate between. <br /></td></tr>
 <tr class="separator:ab62606cc9506ce923fc3e1cec6f0d228"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14906d75ad33da95044916f15c1e4cd6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a14906d75ad33da95044916f15c1e4cd6"></a>
+const std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeLineEntryStack.html#a14906d75ad33da95044916f15c1e4cd6">StackLength_</a></td></tr>
+<tr class="memdesc:a14906d75ad33da95044916f15c1e4cd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The length of the stack. <br /></td></tr>
+<tr class="separator:a14906d75ad33da95044916f15c1e4cd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c91e58eef5391559ddf0fe5fa8f1c85"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4c91e58eef5391559ddf0fe5fa8f1c85"></a>
+<a class="el" href="structTriggerParameters.html">TriggerParameters</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeLineEntryStack.html#a4c91e58eef5391559ddf0fe5fa8f1c85">MinimumTriggerParameters_</a></td></tr>
+<tr class="memdesc:a4c91e58eef5391559ddf0fe5fa8f1c85"><td class="mdescLeft">&#160;</td><td class="mdescRight">The threshold for the parameters to trigger the interpolation. <br /></td></tr>
+<tr class="separator:a4c91e58eef5391559ddf0fe5fa8f1c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Stack of <code><a class="el" href="structGCodeLineEntry.html" title="Holds the parameter of the extruder read from the input .gcode file. ">GCodeLineEntry</a></code>'s. </p>
@@ -177,9 +187,39 @@ std::vector&lt; std::pair&lt; bool, <a class="el" href="structGCodeLineEntry.htm
 
 </div>
 </div>
+<a class="anchor" id="a90ed1c0e067c1d25ddd3339f3331af89"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void slide_back </td>
+          <td>(</td>
+          <td class="paramtype">const std::pair&lt; bool, <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>entry</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Slides the stack entries back and puts <code>entry</code> on top. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entry</td><td>The entry to stack on top. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/paolo/GCodeProcessor/include/<a class="el" href="GCodeLineEntryStack_8h_source.html">GCodeLineEntryStack.h</a></li>
-<li>/home/paolo/GCodeProcessor/src/<a class="el" href="GCodeLineEntryStack_8cpp.html">GCodeLineEntryStack.cpp</a></li>
+<li>/home/paolo/till_code/include/<a class="el" href="GCodeLineEntryStack_8h_source.html">GCodeLineEntryStack.h</a></li>
+<li>/home/paolo/till_code/src/<a class="el" href="GCodeLineEntryStack_8cpp.html">GCodeLineEntryStack.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

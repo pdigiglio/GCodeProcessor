@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>GCode Processor: /home/paolo/GCodeProcessor/src/GCodeLineEntryStack.cpp File Reference</title>
+<title>GCode Processor: /home/paolo/till_code/src/GCodeLineEntryStack.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,15 +84,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">GCodeLineEntryStack.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="GCodeLineEntryStack_8h_source.html">GCodeLineEntryStack.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="GCodeLineEntry_8h_source.html">GCodeLineEntry.h</a>&quot;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-</div><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<code>#include &lt;iostream&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a2ca2d1f8c5d279803b1bcfda25b5ea65"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ca2d1f8c5d279803b1bcfda25b5ea65"></a>
+const bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_true</b> (const std::vector&lt; std::pair&lt; bool, <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &gt;&gt; &amp;input)</td></tr>
+<tr class="separator:a2ca2d1f8c5d279803b1bcfda25b5ea65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a7af8136abee60ba8a1102db43f66e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a7af8136abee60ba8a1102db43f66e9"></a>
+constexpr double&#160;</td><td class="memItemRight" valign="bottom"><b>pi</b> ()</td></tr>
+<tr class="separator:a0a7af8136abee60ba8a1102db43f66e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ad4f02ea3fe2adef967f39b84700bef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ad4f02ea3fe2adef967f39b84700bef"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>distance</b> (const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;A, const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;B)</td></tr>
+<tr class="separator:a7ad4f02ea3fe2adef967f39b84700bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b8639707e1abc6c13762112766dba6d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b8639707e1abc6c13762112766dba6d"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>angle</b> (const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;A, const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;B, const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;C)</td></tr>
+<tr class="separator:a8b8639707e1abc6c13762112766dba6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad15e7b8716c8591f4bf4d0cbb16ef638"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad15e7b8716c8591f4bf4d0cbb16ef638"></a>
+decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><b>evaluate_parameters</b> (const std::vector&lt; std::pair&lt; bool, <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &gt;&gt; &amp;input)</td></tr>
+<tr class="separator:ad15e7b8716c8591f4bf4d0cbb16ef638"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section date"><dt>Date</dt><dd>08/30/16 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Paolo Di Giglio (github.com/pdigiglio), <a href="#" onclick="location.href='mai'+'lto:'+'p.d'+'ig'+'igl'+'io'+'91@'+'gm'+'ail'+'.c'+'om'; return false;">p.dig<span style="display: none;">.nosp@m.</span>igli<span style="display: none;">.nosp@m.</span>o91@g<span style="display: none;">.nosp@m.</span>mail<span style="display: none;">.nosp@m.</span>.com</a> </dd></dl>
 </div></div><!-- contents -->
