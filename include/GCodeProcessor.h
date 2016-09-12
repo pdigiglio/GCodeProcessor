@@ -5,7 +5,7 @@
 #ifndef  GCode_Processor_h
 #define  GCode_Processor_h
 
-#include "fwd/TriggerParameters.h"
+#include "fwd/CommandLineArguments.h"
 
 #include "GCodeLineEntryStack.h"
 
@@ -19,7 +19,7 @@ public:
     /// \brief   Constructor.
     /// \details Reads the input file in and stores the lines in a `std::vector`.
     /// \param input_file_name The name of the file to read in.
-    explicit GCodeProcessor(const std::string& input_file_name, const TriggerParameters& trigger_params);
+    explicit GCodeProcessor(CommandLineArguments&& cmd_line_args);
 
     /// _Default_ destructor.
     ~GCodeProcessor() = default;

@@ -19,9 +19,9 @@
 
 #include <iostream>
 
-GCodeLineEntryStack::GCodeLineEntryStack(std::size_t stack_length, const TriggerParameters& trigger_params) :
+GCodeLineEntryStack::GCodeLineEntryStack(std::size_t stack_length, TriggerParameters&& trigger_params) :
     StackLength_(stack_length),
-    MinimumTriggerParameters_(trigger_params)
+    MinimumTriggerParameters_(std::move(trigger_params))
 {
     Stack_.reserve(StackLength_);
     for (std::size_t i = 0; i < StackLength_; ++i)

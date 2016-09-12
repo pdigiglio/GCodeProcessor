@@ -3,8 +3,7 @@
 
 #include "GCodeProcessor.h"
 
-#include "TriggerParameters.h"
-
+#include "CommandLineArguments.h"
 #include "GCodeLineEntry.h"
 #include "GCodeLineEntryStack.h"
 #include "InputFileIterator.h"
@@ -19,10 +18,11 @@
 #include <utility>
 #include <vector>
 
-GCodeProcessor::GCodeProcessor(const std::string& input_file_name, const TriggerParameters& trigger_params) :
-    InputEntriesStack_(std::make_unique<GCodeLineEntryStack>(3, trigger_params))
+GCodeProcessor::GCodeProcessor(CommandLineArguments&& cmd_line_args) :
+    InputEntriesStack_(std::make_unique<GCodeLineEntryStack>(3,
+                std::forward<CommandLineArguments>(cmd_line_args).triggerParameters()))
 {
-    std::ifstream inFile(input_file_name, std::ios::in);
+    std::ifstream inFile(std::forward<CommandLineArguments>(cmd_line_args).fileName(), std::ios::in);
     std::copy(InputFileIterator(inFile), InputFileIterator::end(),
             std::inserter(InputFileLines_, InputFileLines_.begin()));
 }

@@ -6,6 +6,8 @@
 #ifndef  Command_Line_Arguments_h
 #define  Command_Line_Arguments_h
 
+#include "TriggerParameters.h"
+
 #include <string>
 
 /// @brief Class to parse the command line arguments.
@@ -22,25 +24,44 @@ public:
     /// @param argv Argument vector.
     explicit CommandLineArguments(int argc, const char *argv[]);
 
-    /// Returns the parsed GCode filename.
-    const std::string& fileName() const
+    /// _Default_ constructor.
+    explicit CommandLineArguments()  = default;
+    /// _Default_ destructor.
+    ~CommandLineArguments()          = default;
+
+    /// _Default_ move assignment operator.
+    CommandLineArguments& operator=(CommandLineArguments&&) = default;
+
+    /// Returns the parsed GCode filename (_lvalue_ version).
+    const std::string& fileName() const &
     { return FileName_; }
+
+    /// Moves the parsed GCode filename (_rvalue_ version).
+    std::string&& fileName() &&
+    { return std::move(FileName_); }
 
     /// Returns the parsed extruder angle (in degrees).
     const double angle() const
-    { return Angle_; }
+    { return TriggerParameters_.Angle; }
 
     /// Returns the parsed extruder travel length (in millimeters).
     const double length() const
-    { return Length_; }
+    { return TriggerParameters_.Length; }
+
+    /// Returns the parsed trigger parameters (_lvalue_ version).
+    const TriggerParameters& triggerParameters() const &
+    { return TriggerParameters_; }
+    
+    /// Moves the parsed trigger parameters (_rvalue_ version).
+    TriggerParameters&& triggerParameters() &&
+    { return std::move(TriggerParameters_); }
 
 private:
     /// GCode file name.
-    const std::string FileName_;
-    /// Extruder angle.
-    const double Angle_;
-    /// Extruder travel length.
-    const double Length_;
+    std::string FileName_;
+
+    /// Parsed trigger parameters.
+    TriggerParameters TriggerParameters_;
 };
 
 #endif

@@ -4,6 +4,7 @@
 ///           <p.digiglio91@gmail.com>
 
 #include "CommandLineArguments.h"
+#include "TriggerParameters.h"
 
 #include <stdexcept>
 #include <string>
@@ -34,8 +35,7 @@ double parseLength(int argc, const char *argv[]) {
 
 CommandLineArguments::CommandLineArguments(int argc, const char *argv[]) :
     FileName_(std::move(parseFileName(argc, argv))),
-    Angle_(parseAngle(argc, argv)),
-    Length_(parseLength(argc, argv))
+    TriggerParameters_(parseLength(argc, argv), parseAngle(argc, argv))
 {
     if (argc != 7)
         throw std::invalid_argument("Wrong number of parameters.");

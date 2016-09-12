@@ -20,6 +20,20 @@ struct TriggerParameters {
     explicit TriggerParameters(double l, double a_d) noexcept
         : Length(l), Angle(a_d)
     {}
+    
+    /// _Default_ constructor.
+    explicit TriggerParameters() = default;
+    /// _Default_ destructor.
+    ~TriggerParameters()         = default;
+
+    /// _Deleted_ copy constructor.
+    TriggerParameters(const TriggerParameters&) = delete;
+    /// _Default_ move constructor.
+    TriggerParameters(TriggerParameters&&)      = default;
+    /// _Deleted_ copy assignment operator.
+    TriggerParameters& operator=(const TriggerParameters&) = delete;
+    /// _Defatult_ move assignment operator.
+    TriggerParameters& operator=(TriggerParameters&&)      = default;
 };
 
 /// Less-than operator.

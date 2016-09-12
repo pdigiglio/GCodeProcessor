@@ -19,7 +19,7 @@ class GCodeLineEntryStack
 {
 public:
     /// Constructor.
-    explicit GCodeLineEntryStack(std::size_t stack_length, const TriggerParameters& trigger_params);
+    explicit GCodeLineEntryStack(std::size_t stack_length, TriggerParameters&& trigger_params);
 
     /// _Default_ destructor.
     ~GCodeLineEntryStack()         = default;
