@@ -1,4 +1,6 @@
-# GCode Processor
+
+
+# GCode Processor [![Build Status](https://travis-ci.org/pdigiglio/GCodeProcessor.svg?branch=master)](https://travis-ci.org/pdigiglio/GCodeProcessor)
 
 To compile it (on Linux):
 ```
