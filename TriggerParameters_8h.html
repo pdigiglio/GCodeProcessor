@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>GCode Processor: /home/paolo/till_code/include/GCodeLineEntry.h File Reference</title>
+<title>GCode Processor: /home/paolo/till_code/include/TriggerParameters.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,25 +86,72 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">GCodeLineEntry.h File Reference</div>  </div>
+<div class="title">TriggerParameters.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a href="GCodeLineEntry_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="TriggerParameters_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds the parameter of the extruder read from the input <code>.gcode</code> file.  <a href="structGCodeLineEntry.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTriggerParameters.html">TriggerParameters</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters of the extruder movements.  <a href="structTriggerParameters.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a9fca90e6fd4c27fc4aef412ee9777f44"><td class="memItemLeft" align="right" valign="top">const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TriggerParameters_8h.html#a9fca90e6fd4c27fc4aef412ee9777f44">operator&lt;</a> (const <a class="el" href="structTriggerParameters.html">TriggerParameters</a> &amp;lhs, const <a class="el" href="structTriggerParameters.html">TriggerParameters</a> &amp;rhs)</td></tr>
+<tr class="separator:a9fca90e6fd4c27fc4aef412ee9777f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Paolo Di Giglio</dd></dl>
-<dl class="section date"><dt>Date</dt><dd>09/17/16 </dd></dl>
-<dl class="section author"><dt>Author</dt><dd>Paolo Di Giglio <a href="#" onclick="location.href='mai'+'lto:'+'p.d'+'ig'+'igl'+'io'+'91@'+'gm'+'ail'+'.c'+'om'; return false;">p.dig<span style="display: none;">.nosp@m.</span>igli<span style="display: none;">.nosp@m.</span>o91@g<span style="display: none;">.nosp@m.</span>mail<span style="display: none;">.nosp@m.</span>.com</a> </dd></dl>
-</div></div><!-- contents -->
+<div class="textblock"><dl class="section date"><dt>Date</dt><dd>08/31/16 </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Paolo Di Giglio (github.com/pdigiglio), <a href="#" onclick="location.href='mai'+'lto:'+'p.d'+'ig'+'igl'+'io'+'91@'+'gm'+'ail'+'.c'+'om'; return false;">p.dig<span style="display: none;">.nosp@m.</span>igli<span style="display: none;">.nosp@m.</span>o91@g<span style="display: none;">.nosp@m.</span>mail<span style="display: none;">.nosp@m.</span>.com</a> </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a9fca90e6fd4c27fc4aef412ee9777f44"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const bool operator&lt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structTriggerParameters.html">TriggerParameters</a> &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structTriggerParameters.html">TriggerParameters</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Less-than operator. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>The left-hand side. </td></tr>
+    <tr><td class="paramname">rhs</td><td>The right-hand side. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

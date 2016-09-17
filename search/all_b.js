@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['triggerparameters',['TriggerParameters',['../structTriggerParameters.html',1,'TriggerParameters'],['../structTriggerParameters.html#ac41d0db5d27fd61650190e4fe101db06',1,'TriggerParameters::TriggerParameters()']]]
+  ['stack_5f',['Stack_',['../classGCodeLineEntryStack.html#ab62606cc9506ce923fc3e1cec6f0d228',1,'GCodeLineEntryStack']]]
 ];

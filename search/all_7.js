@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['main_2ecpp',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['minimumtriggerparameters_5f',['MinimumTriggerParameters_',['../classGCodeLineEntryStack.html#a4c91e58eef5391559ddf0fe5fa8f1c85',1,'GCodeLineEntryStack']]]
+  ['length',['Length',['../structTriggerParameters.html#a165133c1c04da94d94cb485e8de7b99a',1,'TriggerParameters::Length()'],['../classCommandLineArguments.html#a0206d85a8c156082db1978ac2bba8051',1,'CommandLineArguments::length()']]]
 ];

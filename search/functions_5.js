@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['inputfileiterator',['InputFileIterator',['../classInputFileIterator.html#ac3c21272e9e8aeef2e4f51436baad2e5',1,'InputFileIterator::InputFileIterator()'],['../classInputFileIterator.html#a7b3552fba0e6da6da6fc47dc83e6d1c0',1,'InputFileIterator::InputFileIterator(istream_type &amp;is)']]],
-  ['interpolate',['interpolate',['../classGCodeLineEntryStack.html#a9901e34def224f602c55b81fcc11a664',1,'GCodeLineEntryStack']]]
+  ['gcodelineentry',['GCodeLineEntry',['../structGCodeLineEntry.html#a2f9b88eaf6d737898322e9266f5c7b89',1,'GCodeLineEntry::GCodeLineEntry(short g, double x, double y, double e) noexcept'],['../structGCodeLineEntry.html#a16e8a4db0921370235bf5b63ca9fcfe4',1,'GCodeLineEntry::GCodeLineEntry()=default']]],
+  ['gcodelineentrystack',['GCodeLineEntryStack',['../classGCodeLineEntryStack.html#ad2bab897c54f37b6fe11b423126d5144',1,'GCodeLineEntryStack::GCodeLineEntryStack(TriggerParameters &amp;&amp;trigger_params)'],['../classGCodeLineEntryStack.html#a17647551865c0cefabea9c86b15df50f',1,'GCodeLineEntryStack::GCodeLineEntryStack(const GCodeLineEntryStack &amp;)=delete'],['../classGCodeLineEntryStack.html#a51d1c76933e897387a0869a7d9860ae7',1,'GCodeLineEntryStack::GCodeLineEntryStack(GCodeLineEntryStack &amp;&amp;)=delete']]],
+  ['gcodeprocessor',['GCodeProcessor',['../classGCodeProcessor.html#a0c3179703fe43cb070f95b01d023a8ed',1,'GCodeProcessor::GCodeProcessor(CommandLineArguments &amp;&amp;cmd_line_args)'],['../classGCodeProcessor.html#a269d3dce8c2238b41d5e147d1e382437',1,'GCodeProcessor::GCodeProcessor(const GCodeProcessor &amp;)=delete'],['../classGCodeProcessor.html#a4de9fd37f8408e103ca5df8f5b25a3c4',1,'GCodeProcessor::GCodeProcessor(GCodeProcessor &amp;&amp;)=delete']]],
+  ['getstack',['getStack',['../classGCodeLineEntryStack.html#a92855afe7fa7f8f70bf5091f6060e106',1,'GCodeLineEntryStack']]]
 ];

@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -97,9 +98,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae9487251dd02e1dea36edd69aafa1228"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeProcessor.html#ae9487251dd02e1dea36edd69aafa1228">GCodeProcessor</a> (const std::string &amp;input_file_name, const <a class="el" href="structTriggerParameters.html">TriggerParameters</a> &amp;trigger_params)</td></tr>
-<tr class="memdesc:ae9487251dd02e1dea36edd69aafa1228"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ae9487251dd02e1dea36edd69aafa1228">More...</a><br /></td></tr>
-<tr class="separator:ae9487251dd02e1dea36edd69aafa1228"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c3179703fe43cb070f95b01d023a8ed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeProcessor.html#a0c3179703fe43cb070f95b01d023a8ed">GCodeProcessor</a> (<a class="el" href="classCommandLineArguments.html">CommandLineArguments</a> &amp;&amp;cmd_line_args)</td></tr>
+<tr class="memdesc:a0c3179703fe43cb070f95b01d023a8ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a0c3179703fe43cb070f95b01d023a8ed">More...</a><br /></td></tr>
+<tr class="separator:a0c3179703fe43cb070f95b01d023a8ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa15b7bbf9a70fc8bc6902a4ce1f9e03c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa15b7bbf9a70fc8bc6902a4ce1f9e03c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeProcessor.html#aa15b7bbf9a70fc8bc6902a4ce1f9e03c">~GCodeProcessor</a> ()=default</td></tr>
 <tr class="memdesc:aa15b7bbf9a70fc8bc6902a4ce1f9e03c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><em>Default</em> destructor. <br /></td></tr>
@@ -124,26 +125,23 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeProcessor.html#a2e9c5136d19b1a95fc427e0852deab5c">process</a> ()</td></tr>
 <tr class="memdesc:a2e9c5136d19b1a95fc427e0852deab5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process the input file. <br /></td></tr>
 <tr class="separator:a2e9c5136d19b1a95fc427e0852deab5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a3ab31c19c38fe926198ddc4a0a4a91"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a3ab31c19c38fe926198ddc4a0a4a91"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeProcessor.html#a3a3ab31c19c38fe926198ddc4a0a4a91">print</a> () const </td></tr>
-<tr class="memdesc:a3a3ab31c19c38fe926198ddc4a0a4a91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the read-in lines to the <code>stdout</code>. <br /></td></tr>
-<tr class="separator:a3a3ab31c19c38fe926198ddc4a0a4a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a8330286f99f7e2494185763dcf3fc53e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8330286f99f7e2494185763dcf3fc53e"></a>
-std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeProcessor.html#a8330286f99f7e2494185763dcf3fc53e">InputFileLines_</a></td></tr>
-<tr class="memdesc:a8330286f99f7e2494185763dcf3fc53e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The vector of read-in lines. <br /></td></tr>
-<tr class="separator:a8330286f99f7e2494185763dcf3fc53e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a202f1764d45331043f40d0b259472f06"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a202f1764d45331043f40d0b259472f06"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeProcessor.html#a202f1764d45331043f40d0b259472f06">InputFileName_</a></td></tr>
+<tr class="memdesc:a202f1764d45331043f40d0b259472f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">The input <code>.gcode</code> file. <br /></td></tr>
+<tr class="separator:a202f1764d45331043f40d0b259472f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42a7b636cb3529eb246f0551e1bf4694"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42a7b636cb3529eb246f0551e1bf4694"></a>
 std::unique_ptr&lt; <a class="el" href="classGCodeLineEntryStack.html">GCodeLineEntryStack</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCodeProcessor.html#a42a7b636cb3529eb246f0551e1bf4694">InputEntriesStack_</a></td></tr>
-<tr class="memdesc:a42a7b636cb3529eb246f0551e1bf4694"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 2-element <code>.gcode</code> line entry stack. <br /></td></tr>
+<tr class="memdesc:a42a7b636cb3529eb246f0551e1bf4694"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 3-element <code>.gcode</code> line entry stack. <br /></td></tr>
 <tr class="separator:a42a7b636cb3529eb246f0551e1bf4694"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class to read in and process a <code>.gcode</code> file. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>The processor is assuming that only one extruder exists! That may not be the case: multiple stacks may be required to properly parse the file. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ae9487251dd02e1dea36edd69aafa1228"></a>
+<a class="anchor" id="a0c3179703fe43cb070f95b01d023a8ed"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -153,19 +151,9 @@ std::unique_ptr&lt; <a class="el" href="classGCodeLineEntryStack.html">GCodeLine
         <tr>
           <td class="memname"><a class="el" href="classGCodeProcessor.html">GCodeProcessor</a> </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>input_file_name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="classCommandLineArguments.html">CommandLineArguments</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>cmd_line_args</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structTriggerParameters.html">TriggerParameters</a> &amp;&#160;</td>
-          <td class="paramname"><em>trigger_params</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -178,7 +166,7 @@ std::unique_ptr&lt; <a class="el" href="classGCodeLineEntryStack.html">GCodeLine
 <p>Constructor. </p>
 <p>Reads the input file in and stores the lines in a <code>std::vector</code>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">input_file_name</td><td>The name of the file to read in. </td></tr>
+    <tr><td class="paramname">cmd_line_args</td><td>Parsed command line arguments. </td></tr>
   </table>
   </dd>
 </dl>

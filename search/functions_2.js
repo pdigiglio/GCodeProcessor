@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['end',['end',['../classInputFileIterator.html#ada8bf2336ed791b94a18842f0c354b06',1,'InputFileIterator']]]
+  ['distance',['distance',['../structGCodeLineEntry.html#a24a99e9fe37861af4da284e909e36113',1,'GCodeLineEntry']]]
 ];

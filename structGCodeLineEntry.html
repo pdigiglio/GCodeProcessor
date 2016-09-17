@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -83,6 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structGCodeLineEntry-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -104,6 +106,18 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGCodeLineEntry.html#a16e8a4db0921370235bf5b63ca9fcfe4">GCodeLineEntry</a> ()=default</td></tr>
 <tr class="memdesc:a16e8a4db0921370235bf5b63ca9fcfe4"><td class="mdescLeft">&#160;</td><td class="mdescRight"><em>Default</em> constructor. <br /></td></tr>
 <tr class="separator:a16e8a4db0921370235bf5b63ca9fcfe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a66dbf64b2e956a8e3b814624cd2c826b"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGCodeLineEntry.html#a66dbf64b2e956a8e3b814624cd2c826b">angle</a> (const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;A, const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;B, const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;C) noexcept</td></tr>
+<tr class="memdesc:a66dbf64b2e956a8e3b814624cd2c826b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Distance between the coordinates of two entries.  <a href="#a66dbf64b2e956a8e3b814624cd2c826b">More...</a><br /></td></tr>
+<tr class="separator:a66dbf64b2e956a8e3b814624cd2c826b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d4eb07455a01c465ed3dcd00340b702"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGCodeLineEntry.html#a1d4eb07455a01c465ed3dcd00340b702">point_between</a> (const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;A, const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;B, const double d) noexcept</td></tr>
+<tr class="memdesc:a1d4eb07455a01c465ed3dcd00340b702"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a point on the segment <em>AB</em> with a specified distance from the second point.  <a href="#a1d4eb07455a01c465ed3dcd00340b702">More...</a><br /></td></tr>
+<tr class="separator:a1d4eb07455a01c465ed3dcd00340b702"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24a99e9fe37861af4da284e909e36113"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGCodeLineEntry.html#a24a99e9fe37861af4da284e909e36113">distance</a> (const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;A, const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;B) noexcept</td></tr>
+<tr class="memdesc:a24a99e9fe37861af4da284e909e36113"><td class="mdescLeft">&#160;</td><td class="mdescRight">Angle <em>ABC</em> (in degrees) between two segments (i.e. three points).  <a href="#a24a99e9fe37861af4da284e909e36113">More...</a><br /></td></tr>
+<tr class="separator:a24a99e9fe37861af4da284e909e36113"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -184,8 +198,159 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a66dbf64b2e956a8e3b814624cd2c826b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double angle </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;&#160;</td>
+          <td class="paramname"><em>A</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;&#160;</td>
+          <td class="paramname"><em>B</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;&#160;</td>
+          <td class="paramname"><em>C</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Distance between the coordinates of two entries. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">A</td><td>The first coordinate. </td></tr>
+    <tr><td class="paramname">B</td><td>The second coordinate. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section attention"><dt>Attention</dt><dd>It's a <code>static</code> member variable just because I want it to be in the <code><a class="el" href="structGCodeLineEntry.html" title="Holds the parameter of the extruder read from the input .gcode file. ">GCodeLineEntry</a></code> namespace. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd><code>throw</code> if the <em>G</em>'s don't match! </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a24a99e9fe37861af4da284e909e36113"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double distance </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;&#160;</td>
+          <td class="paramname"><em>A</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;&#160;</td>
+          <td class="paramname"><em>B</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Angle <em>ABC</em> (in degrees) between two segments (i.e. three points). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">A</td><td>The first point. </td></tr>
+    <tr><td class="paramname">B</td><td>The second point. </td></tr>
+    <tr><td class="paramname">C</td><td>The third point. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section attention"><dt>Attention</dt><dd>It's a <code>static</code> member variable just because I want it to be in the <code><a class="el" href="structGCodeLineEntry.html" title="Holds the parameter of the extruder read from the input .gcode file. ">GCodeLineEntry</a></code> namespace. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd><code>throw</code> if the <em>G</em>'s don't match! </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1d4eb07455a01c465ed3dcd00340b702"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> point_between </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;&#160;</td>
+          <td class="paramname"><em>A</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structGCodeLineEntry.html">GCodeLineEntry</a> &amp;&#160;</td>
+          <td class="paramname"><em>B</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates a point on the segment <em>AB</em> with a specified distance from the second point. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">A</td><td>The first coordinate. </td></tr>
+    <tr><td class="paramname">B</td><td>The second coordinate. </td></tr>
+    <tr><td class="paramname">d</td><td>The distance from the second point. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section attention"><dt>Attention</dt><dd>It's a <code>static</code> member variable just because I want it to be in the <code><a class="el" href="structGCodeLineEntry.html" title="Holds the parameter of the extruder read from the input .gcode file. ">GCodeLineEntry</a></code> namespace. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd><code>throw</code> if the <em>G</em>'s don't match! </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>/home/paolo/till_code/include/<a class="el" href="GCodeLineEntry_8h_source.html">GCodeLineEntry.h</a></li>
+<li>/home/paolo/till_code/src/GCodeLineEntry.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
