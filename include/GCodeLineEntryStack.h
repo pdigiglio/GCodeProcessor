@@ -19,9 +19,8 @@ class GCodeLineEntryStack
 {
 public:
     /// Constructor.
-    /// @param stack_length Number of elements in the stack.
     /// @param trigger_params Extruder parameters that will trigger the interpolation.
-    explicit GCodeLineEntryStack(std::size_t stack_length, TriggerParameters&& trigger_params);
+    explicit GCodeLineEntryStack(TriggerParameters&& trigger_params);
 
     /// _Default_ destructor.
     ~GCodeLineEntryStack()         = default;
@@ -52,9 +51,6 @@ public:
 private:
     /// The two temporary elements to interpolate between.
     std::vector<std::pair<bool, GCodeLineEntry>> Stack_;
-
-    /// The length of the stack.
-    const std::size_t StackLength_;
 
     /// The threshold for the parameters to trigger the interpolation.
     const TriggerParameters MinimumTriggerParameters_;

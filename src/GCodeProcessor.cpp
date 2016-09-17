@@ -22,8 +22,7 @@
 
 GCodeProcessor::GCodeProcessor(CommandLineArguments&& cmd_line_args) :
     InputFileName_(std::forward<CommandLineArguments>(cmd_line_args).fileName()),
-    InputEntriesStack_(std::make_unique<GCodeLineEntryStack>(3,
-                std::forward<CommandLineArguments>(cmd_line_args).triggerParameters()))
+    InputEntriesStack_(std::make_unique<GCodeLineEntryStack>(std::forward<CommandLineArguments>(cmd_line_args).triggerParameters()))
 {
     // Count file lines
     int num_lines = 0;

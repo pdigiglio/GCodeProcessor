@@ -17,14 +17,11 @@
 #include <utility>
 #include <vector>
 
-#include <iostream>
-
-GCodeLineEntryStack::GCodeLineEntryStack(std::size_t stack_length, TriggerParameters&& trigger_params) :
-    StackLength_(stack_length),
+GCodeLineEntryStack::GCodeLineEntryStack(TriggerParameters&& trigger_params) :
     MinimumTriggerParameters_(std::move(trigger_params))
 {
-    Stack_.reserve(StackLength_);
-    for (std::size_t i = 0; i < StackLength_; ++i)
+    Stack_.reserve(3);
+    for (std::size_t i = 0; i < 3; ++i)
         Stack_.push_back(std::make_pair(false, GCodeLineEntry{}));
 }
 
@@ -56,10 +53,8 @@ std::pair<bool, GCodeLineEntry> GCodeLineEntryStack::push(const std::pair<bool, 
     slide_back(Stack_, entry);
 
     // Check if adjacent entries are candidates for fitting
-    if (is_true(Stack_)) {
-//        std::cerr << "candidate: ";
+    if (is_true(Stack_))
         return interpolate();
-    }
 
     // Return a pair whose first entry is false
     return std::make_pair(false, GCodeLineEntry{});
@@ -75,12 +70,9 @@ decltype(auto) evaluate_parameters(const std::vector<std::pair<bool, GCodeLineEn
 
 std::pair<bool, GCodeLineEntry> GCodeLineEntryStack::interpolate() const
 {
-    if (evaluate_parameters(Stack_) < MinimumTriggerParameters_) {
-//        std::cerr << "inserted!" << std::endl;
+    if (evaluate_parameters(Stack_) < MinimumTriggerParameters_)
         return std::make_pair(true,
                 GCodeLineEntry::point_between(Stack_[0].second, Stack_[1].second, 1.));
-    }
 
-//    std::cerr << "discarded!" << std::endl;
     return std::make_pair(false, GCodeLineEntry{});
 }
