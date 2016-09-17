@@ -19,6 +19,19 @@ double GCodeLineEntry::distance(const GCodeLineEntry& A, const GCodeLineEntry& B
     return std::sqrt((delta_x * delta_x) + (delta_y * delta_y));
 }
 
+GCodeLineEntry GCodeLineEntry::point_between(const GCodeLineEntry& A, const GCodeLineEntry& B, const double d) noexcept
+{
+    // Evaluate angular coefficient, angle, and magnitude of A->B
+    const double angular_coeff = (B.Y - A.Y) / (B.X - A.X);
+    const double angle = std::atan(angular_coeff) + ((B.X < A.X) ? pi() : 0);
+    const double magnitude = distance(A, B);
+
+    return GCodeLineEntry(A.G, // !! Assuming A.G == B.G !!
+            A.X + (magnitude - d) * std::cos(angle),
+            A.Y + (magnitude - d) * std::sin(angle),
+            A.E + (B.E - A.E) * (1 - d / magnitude));
+}
+
 double GCodeLineEntry::angle(const GCodeLineEntry& A, const GCodeLineEntry& B, const GCodeLineEntry& C) noexcept
 {
     const auto ab_dot_bc = (A.X - B.X) * (B.X - C.X) + (A.Y - B.Y) * (B.Y - C.Y);
