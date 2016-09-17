@@ -19,6 +19,8 @@ class GCodeLineEntryStack
 {
 public:
     /// Constructor.
+    /// @param stack_length Number of elements in the stack.
+    /// @param trigger_params Extruder parameters that will trigger the interpolation.
     explicit GCodeLineEntryStack(std::size_t stack_length, TriggerParameters&& trigger_params);
 
     /// _Default_ destructor.
@@ -33,10 +35,11 @@ public:
     /// _Deleted_ move assignment operator.
     GCodeLineEntryStack& operator=(GCodeLineEntryStack&&)      = delete;
 
-    /// \brief Pushes the new value in the stack discarding the last one and,
+    /// @brief Pushes the entry in the stack discarding the first one and,
     /// possibly, interpolates the stack entries.
-    /// \param entry The enry to push in the stack.
-    /// \return A pair whose entries have to be interpreted as follows:
+    /// @param entry The enry to push in the stack.
+    ///
+    /// @return A pair whose entries have to be interpreted as follows:
     ///  * `pair.first ` tells whether the stack entries have been interpolated;
     ///  * `pair.second` the interpolated `GCodeLineEntry`. If an interpolation
     /// didn't take place, this is just a dummy value and __must__ be ignored.
@@ -54,14 +57,10 @@ private:
     const std::size_t StackLength_;
 
     /// The threshold for the parameters to trigger the interpolation.
-    TriggerParameters MinimumTriggerParameters_;
+    const TriggerParameters MinimumTriggerParameters_;
 
     /// Interpolates between the entries of the `Stack_`.
     std::pair<bool, GCodeLineEntry> interpolate() const;
-
-    /// Slides the stack entries back and puts `entry` on top.
-    /// \param entry The entry to stack on top.
-    void slide_back(const std::pair<bool, GCodeLineEntry>& entry);
 };
 
 #endif

@@ -26,6 +26,20 @@ struct GCodeLineEntry {
 
     /// _Default_ constructor.
     explicit GCodeLineEntry() = default;
+
+    /// @brief Distance between the coordinates of two entries.
+    /// @param A The first coordinate.
+    /// @param B The second coordinate.
+    /// @attention It's a `static` member variable just because I want it to be in the `GCodeLineEntry` namespace.
+    static double angle(const GCodeLineEntry& A, const GCodeLineEntry& B, const GCodeLineEntry& C) noexcept;
+
+    /// @brief Angle _ABC_ (in degrees) between two segments (i.e. three points).
+    /// @param A The first point.
+    /// @param B The second point.
+    /// @param C The third point.
+    /// @attention It's a `static` member variable just because I want it to be in the `GCodeLineEntry` namespace.
+    static double distance(const GCodeLineEntry& A, const GCodeLineEntry& B) noexcept;
+
 };
 
 #endif

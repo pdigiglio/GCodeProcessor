@@ -1,5 +1,9 @@
-/// \file
+/// @file GCodeProcessor.cpp
+/// @author  Paolo Di Giglio (github.com/pdigiglio),
+///          <p.digiglio91@gmail.com>
 
+
+//#include <cassert>
 
 #include "GCodeProcessor.h"
 
@@ -11,20 +15,28 @@
 #include <algorithm>
 #include <fstream>
 #include <iostream>
-#include <iterator>
 #include <memory>
 #include <sstream>
 #include <string>
-#include <utility>
 #include <vector>
 
 GCodeProcessor::GCodeProcessor(CommandLineArguments&& cmd_line_args) :
+    InputFileName_(std::forward<CommandLineArguments>(cmd_line_args).fileName()),
     InputEntriesStack_(std::make_unique<GCodeLineEntryStack>(3,
                 std::forward<CommandLineArguments>(cmd_line_args).triggerParameters()))
 {
-    std::ifstream inFile(std::forward<CommandLineArguments>(cmd_line_args).fileName(), std::ios::in);
-    std::copy(InputFileIterator(inFile), InputFileIterator::end(),
-            std::inserter(InputFileLines_, InputFileLines_.begin()));
+    // Count file lines
+    int num_lines = 0;
+    std::ifstream input_file(InputFileName_, std::ios::in);
+    std::for_each(InputFileIterator(input_file), InputFileIterator::end(),
+            [&](const auto& l) { ++num_lines; });
+
+    // Print number of lines
+    std::cerr << " >> Input file length: " << num_lines << " lines." << std::endl;
+
+    // Check for invalid input
+    if (num_lines < 2)
+        throw std::invalid_argument("File is less than 2 lines long: too short to be processed.");
 }
 
 // Helper function to split a string and put the separate substrings
@@ -41,6 +53,7 @@ inline decltype(auto) split_string(const std::string& input_string) {
 decltype(auto) interpret_entry (const std::vector<std::string>& input) {
     // empty line entry
     GCodeLineEntry line_entry;
+    // flag to keep track of whether the line is interesting
     bool entry_is_valid = false;
 
     if (input.size() > 3) {
@@ -63,7 +76,6 @@ decltype(auto) interpret_entry (const std::vector<std::string>& input) {
         }
     }
 
-
     return std::make_pair(entry_is_valid, line_entry);
 } 
 
@@ -74,25 +86,55 @@ std::string GCodeLineEntry_to_string(const GCodeLineEntry& input) {
         << " X" << input.X
         << " Y" << input.Y;
     out.precision(8);
-    out << " E" << input.E << std::endl;
+    out << " E" << input.E;
+
+    // < Marker to identify added lines
+    out << " ; interpolated ";
     return out.str();
 }
 
-void GCodeProcessor::process() {
-    std::size_t line_number = 0;
-    for (const auto& it : InputFileLines_) {
-        auto inserted_entry(InputEntriesStack_->push(interpret_entry(split_string(it))));
-        if (inserted_entry.first)
-            std::cout << "Entry has been inserted in line " << ++line_number << std::endl;
-//        if (interpreted_entry.first) {
-//            std::cout << GCodeLineEntry_to_string(interpreted_entry.second);
-//            std::cout << it << std::endl << std::endl;
-//        }
-    }
+// Shifts the content of a vector
+template <typename T>
+void slide_back(std::vector<T>& v, const T& entry) {
+    v.erase(v.cbegin());
+    v.emplace_back(entry);
 }
 
-void GCodeProcessor::print() const {
-    for (const auto& it : InputFileLines_) {
-        std::cout << it << std::endl;
+void GCodeProcessor::process() {
+    // Open input file
+    std::ifstream input_file(InputFileName_, std::ios::in);
+
+    // File iterator
+    auto it = InputFileIterator(input_file);
+
+    // Temporary vector to hold 2 lines
+    std::vector<std::string> InputFileLines_;
+    InputFileLines_.reserve(2);
+
+    // Manually insert the first two lines
+    InputFileLines_.emplace_back(*it); ++it;
+    InputFileLines_.emplace_back(*it); ++it;
+
+    // Counter for the insertions
+    unsigned insertions = 0;
+    // Loop over the rest of the input file
+    for ( ; it != InputFileIterator::end(); ++it) {
+        auto inserted_entry(InputEntriesStack_->push(interpret_entry(split_string(*it))));
+
+        // Print the cached line
+        std::cout << InputFileLines_[0] << std::endl;
+        // If an interpolation happened, print the line
+        if (inserted_entry.first) {
+            std::cout << GCodeLineEntry_to_string(inserted_entry.second) << std::endl;
+            ++insertions;
+        }
+
+        slide_back(InputFileLines_, *it);
     }
+
+    // Manually print the last two lines of the file
+    std::cout << InputFileLines_[0] << std::endl;
+    std::cout << InputFileLines_[1] << std::endl;
+
+    std::cerr << " >> Inserted lines:    " << insertions << std::endl;
 }

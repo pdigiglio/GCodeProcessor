@@ -1,5 +1,5 @@
-/// \file    GCodeProcessor.h
-/// \author  Paolo Di Giglio (github.com/pdigiglio),
+/// @file    GCodeProcessor.h
+/// @author  Paolo Di Giglio (github.com/pdigiglio),
 ///          <p.digiglio91@gmail.com>
 
 #ifndef  GCode_Processor_h
@@ -11,14 +11,13 @@
 
 #include <memory>
 #include <string>
-#include <vector>
 
 /// Class to read in and process a `.gcode` file.
 class GCodeProcessor {
 public:
-    /// \brief   Constructor.
-    /// \details Reads the input file in and stores the lines in a `std::vector`.
-    /// \param input_file_name The name of the file to read in.
+    /// @brief   Constructor.
+    /// @details Reads the input file in and stores the lines in a `std::vector`.
+    /// @param cmd_line_args Parsed command line arguments.
     explicit GCodeProcessor(CommandLineArguments&& cmd_line_args);
 
     /// _Default_ destructor.
@@ -36,13 +35,11 @@ public:
     /// Process the input file.
     void process();
 
-    /// Prints the read-in lines to the `stdout`.
-    void print() const;
 private:
-    /// The vector of read-in lines.
-    std::vector<std::string> InputFileLines_;
+    /// The input `.gcode` file.
+    const std::string InputFileName_;
 
-    /// The 2-element `.gcode` line entry stack.
+    /// The 3-element `.gcode` line entry stack.
     std::unique_ptr<GCodeLineEntryStack> InputEntriesStack_;
 };
 
