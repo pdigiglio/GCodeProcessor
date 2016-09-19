@@ -12,7 +12,10 @@
 #include <memory>
 #include <string>
 
-/// Class to read in and process a `.gcode` file.
+/// @brief Class to read in and process a `.gcode` file.
+/// @todo The processor is assuming that only one extruder exists!
+///       That may not be the case: multiple stacks may be required to
+///       properly parse the file.
 class GCodeProcessor {
 public:
     /// @brief   Constructor.
