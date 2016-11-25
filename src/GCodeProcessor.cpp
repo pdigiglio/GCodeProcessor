@@ -18,6 +18,7 @@
 #include <memory>
 #include <sstream>
 #include <string>
+#include <stdexcept>
 #include <vector>
 
 GCodeProcessor::GCodeProcessor(CommandLineArguments&& cmd_line_args) :
@@ -99,6 +100,45 @@ void slide_back(std::vector<T>& v, const T& entry) {
     v.emplace_back(entry);
 }
 
+std::string replace_extruder_param(const std::string& line_entry, const std::string& ext_param) {
+    auto split_line = split_string(line_entry);
+
+    // Search and replaces the 'E' entry
+    for (auto& word : split_line) 
+        if (word.find('E') == 0)
+            word = ext_param;
+
+
+    std::ostringstream new_line;
+    for (const auto& word : split_line)
+        new_line << word << " ";
+
+    return new_line.str();
+}
+
+// XXX This will also find words that start with 'E'!!
+const std::pair<bool, double> extract_extruder_param(const std::string& line_entry) {
+    auto split_line = split_string(line_entry);
+
+    // Search and replaces the 'E' entry
+    for (auto& word : split_line) 
+        if (word.find('E') == 0) {
+            double value = 0.;
+            try {
+                value = std::stod(word.substr(1));
+            } catch (const std::invalid_argument& e) {
+                // Jump to next instruction in the loop
+                continue;
+            }
+
+            // If no exception occurred
+            return std::make_pair(true, value);
+        }
+
+    // If entry is not found
+    return std::make_pair(false, 0.);
+}
+
 void GCodeProcessor::process() {
     // Open input file
     std::ifstream input_file(InputFileName_, std::ios::in);
@@ -116,15 +156,27 @@ void GCodeProcessor::process() {
 
     // Counter for the insertions
     unsigned insertions = 0;
+    std::vector<double> extruder_defect(2, 0.);
+
     // Loop over the rest of the input file
     for ( ; it != InputFileIterator::end(); ++it) {
         auto inserted_entry(InputEntriesStack_->push(interpret_entry(split_string(*it))));
 
-        // Print the cached line
-        std::cout << InputFileLines_[0] << std::endl;
+        // Check if the cached line has an extruder directive
+        const auto& extruder_parameter = extract_extruder_param(InputFileLines_[0]);
+        if (extruder_parameter.first) {
+            double e = extruder_parameter.second - extruder_defect[0];
+            std::cout << replace_extruder_param(InputFileLines_[0], "E" + std::to_string(e))
+                      << std::endl;
+        }
+        else
+            std::cout << InputFileLines_[0] << std::endl;
+
         // If an interpolation happened, print the line
         if (inserted_entry.first) {
             std::cout << GCodeLineEntry_to_string(inserted_entry.second) << std::endl;
+            extruder_defect[0] = extruder_defect[1];
+            extruder_defect[1] = inserted_entry.second.R;
             ++insertions;
         }
 

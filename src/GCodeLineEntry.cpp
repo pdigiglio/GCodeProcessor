@@ -19,17 +19,21 @@ double GCodeLineEntry::distance(const GCodeLineEntry& A, const GCodeLineEntry& B
     return std::sqrt((delta_x * delta_x) + (delta_y * delta_y));
 }
 
-GCodeLineEntry GCodeLineEntry::point_between(const GCodeLineEntry& A, const GCodeLineEntry& B, const double d) noexcept
+// Helper function to calculate the angular coefficient of an extruder movement
+constexpr inline double angular_coefficient(const GCodeLineEntry& A, const GCodeLineEntry& B)
+{ return (B.Y - A.Y) / (B.X - A.X); }
+
+GCodeLineEntry GCodeLineEntry::point_between(const GCodeLineEntry& A, const GCodeLineEntry& B, const double d, double red) noexcept
 {
-    // Evaluate angular coefficient, angle, and magnitude of A->B
-    const double angular_coeff = (B.Y - A.Y) / (B.X - A.X);
-    const double angle = std::atan(angular_coeff) + ((B.X < A.X) ? pi() : 0);
+    // Angle, and magnitude of A->B
+    const double angle = std::atan(angular_coefficient(A, B)) + ((B.X < A.X) ? pi() : 0.);
     const double magnitude = distance(A, B);
 
     return GCodeLineEntry(A.G, // !! Assuming A.G == B.G !!
             A.X + (magnitude - d) * std::cos(angle),
             A.Y + (magnitude - d) * std::sin(angle),
-            A.E + (B.E - A.E) * (1 - d / magnitude));
+            A.E + red * (B.E - A.E) * (1 - d / magnitude),
+            (1 - red) * (B.E - A.E) * (1 - d / magnitude));
 }
 
 double GCodeLineEntry::angle(const GCodeLineEntry& A, const GCodeLineEntry& B, const GCodeLineEntry& C) noexcept

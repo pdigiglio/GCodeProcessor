@@ -72,7 +72,7 @@ std::pair<bool, GCodeLineEntry> GCodeLineEntryStack::interpolate() const
 {
     if (evaluate_parameters(Stack_) < MinimumTriggerParameters_)
         return std::make_pair(true,
-                GCodeLineEntry::point_between(Stack_[0].second, Stack_[1].second, 1.));
+                GCodeLineEntry::point_between(Stack_[0].second, Stack_[1].second, .8, .5));
 
     return std::make_pair(false, GCodeLineEntry{});
 }

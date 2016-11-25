@@ -14,14 +14,16 @@ struct GCodeLineEntry {
     double Y;
     /// Length of the filament to extrude.
     double E;
+    /// The reducef filament (only in interpolated entries)
+    double R;
 
     /// \brief Constructor.
     /// \param g The _G_ (extruder index) entry.
     /// \param x The _X_ (_x_ coordinate) entry.
     /// \param y The _Y_ (_y_ coordinate) entry.
     /// \param e The filament length to push out.
-    explicit GCodeLineEntry(short g, double x, double y, double e) noexcept :
-        G(g), X(x), Y(y), E(e)
+    constexpr explicit GCodeLineEntry(short g, double x, double y, double e, double r = 0) noexcept :
+        G(g), X(x), Y(y), E(e), R(r)
     {}
 
     /// _Default_ constructor.
@@ -38,9 +40,10 @@ struct GCodeLineEntry {
     /// @param A The first coordinate.
     /// @param B The second coordinate.
     /// @param d The distance from the second point.
+    /// @param red The reduction factor (between _0_ and _1_).
     /// @attention It's a `static` member variable just because I want it to be in the `GCodeLineEntry` namespace.
     /// @todo `throw` if the _G_'s don't match!
-    static GCodeLineEntry point_between(const GCodeLineEntry& A, const GCodeLineEntry& B, const double d) noexcept;
+    static GCodeLineEntry point_between(const GCodeLineEntry& A, const GCodeLineEntry& B, const double d, double red = 1.) noexcept;
 
     /// @brief Angle _ABC_ (in degrees) between two segments (i.e. three points).
     /// @param A The first point.
